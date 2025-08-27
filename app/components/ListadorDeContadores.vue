@@ -3,12 +3,12 @@
     <div class="search-bar">
       <input type="text" v-model="search" placeholder="Buscar contador..." />
     </div>
-    <div v-if="!counters.length" class="empty-state">
+    <div v-show="!counters.length" class="empty-state">
       <p>No tienes contadores aún.</p>
-      <button class="btn btn-primary" @click="openModal">Crear contador</button>
+      <button class="btn btn-primary" @click="openModal" :disabled="count > 19">Crear contador</button>
     </div>
 
-    <transition-group name="fade" tag="div" class="listador-inner" v-else>
+    <transition-group name="fade" tag="div" class="listador-inner" v-show="counters.length">
       <div v-for="c in counters" :key="c.id" class="contador-wrapper">
         <Contador :counter="c" />
       </div>
@@ -29,6 +29,8 @@ watch(search, (val) => {
 })
 
 const counters = computed(() => store.getters.filteredCounters)
+
+const count = computed(() => store.state.counters.length)
 
 function openModal() {
   store.commit('setShowModal', true)
