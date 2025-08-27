@@ -17,6 +17,7 @@ export interface State {
 }
 
 function loadState(): Partial<State> {
+  if (typeof window === 'undefined') return {}
   const counters = localStorage.getItem('counters')
   const filters = sessionStorage.getItem('filters')
   return {
@@ -34,7 +35,7 @@ export default createStore({
     sortDir: 'asc',
     showModal: false,
     searchQuery: '',
-    ...loadState()
+    ...(typeof window !== 'undefined' ? loadState() : {})
   },
   mutations: {
     addCounter(state: State, name: string) {
