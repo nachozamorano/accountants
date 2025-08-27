@@ -1,75 +1,83 @@
-# Nuxt Minimal Starter
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Gestor de Contadores
 
-## Setup
+Aplicación web para crear, administrar y filtrar contadores numéricos de forma sencilla. Permite sumar, restar y eliminar contadores, así como aplicar filtros y ordenar la lista. Además, muestra un resumen de la suma total de valores y la cantidad de contadores.
 
-Make sure to install dependencies:
+## Características
 
+- Crear, incrementar, decrementar y eliminar contadores.
+- Filtrar contadores por valores mayores o menores a un número.
+- Ordenar por nombre o valor (ascendente / descendente).
+- Buscador de contadores por nombre.
+- Transiciones suaves al agregar o eliminar contadores.
+- Footer con la **suma total de todos los contadores** y el total de contadores.
+- Persistencia del estado usando `localStorage` y `sessionStorage`.
+- Interfaz responsive y moderna.
+
+## Tecnologías
+
+- [Vue 3](https://vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- TypeScript
+- CSS moderno con variables y gradientes
+- Transiciones con `<transition-group>`
+
+## Instalación
+
+1. Clonar el repositorio:  
 ```bash
-# npm
+git clone https://github.com/nachozamorano/accountants.git
+cd accountants
+```
+
+2. Instalar dependencias:  
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
+# o
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+3. Ejecutar el proyecto en modo desarrollo:  
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
+# o
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+4. Abrir la aplicación en tu navegador:  
+```
+http://localhost:3000
 ```
 
-Locally preview production build:
+## Estructura del proyecto
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```
+src/
+├─ components/
+│  ├─ Contador.vue           # Componente de cada contador individual
+│  ├─ SumaDeContadores.vue   # Footer con suma total y cantidad de contadores
+│  ├─...
+├─ store/
+│  ├─ index.ts               # Estado global con Vuex
+├─ pages/
+│  ├─ index.vue              # Página principal con listado y buscador
+└─ App.vue                   # Componente raíz
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Uso
+
+1. Crear un contador con el botón **"Crear contador"**.
+2. Incrementar o decrementar el valor con los botones `+1` y `-1`.
+3. Eliminar un contador con el botón de basurero.
+4. Usar el buscador para filtrar contadores por nombre.
+5. Aplicar filtros por valor y ordenar usando las opciones disponibles.
+6. Consultar en el footer la **suma total de valores** y la cantidad de contadores.
+
+## Personalización
+
+- Cambiar colores y sombras editando las **variables CSS** (`--primary`, `--bg`, `--muted`, etc.).
+- Modificar las animaciones en los contadores ajustando las clases de `<transition-group>`.
+
+## Licencia
+
+MIT License
